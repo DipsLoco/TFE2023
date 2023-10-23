@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "Site_resa/wsgi.py",
+        "use": "@vercel/python",
+        "config": {
+          "maxLambdaSize": "15mb",
+          "runtime": "python3.8",
+          "buildCommand": "pip install -r requirements.txt"
+        }
+      }
+    ],
+    "routes": [
+      { "handle": "filesystem" },
+      { "src": "/(.*)", "dest": "Site_resa/wsgi.py" }
+    ],
+    "env": {
+      "DJANGO_SETTINGS_MODULE": "Site_resa.settings"
+    }
+  }
+  
